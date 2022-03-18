@@ -21,9 +21,14 @@
                   </button>
                   <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                     <ul class="navbar-nav ms-auto">
-                      <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="#">SignUp</a></li>
-                      <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="#">Login</a></li>
+                      {% if user.is_authenticated %}
+                      <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="{% url 'register' %}">Hey {{user.username}}</a></li>
                       <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="#">Create Post</a></li>
+                      <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="{% url 'register' %}">Logout</a></li>
+                      {% else %}
+                      <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="{% url 'register' %}">SignUp</a></li>
+                      <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="{% url 'login' %}">Login</a></li>
+                      {% endif %}
                       <li class="nav-item dropdown">
                         <a style="margin-right: 70px;" class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           <img class="img-fluid profile__img" src="../static/images/port.jpeg" alt="">

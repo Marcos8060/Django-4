@@ -13,16 +13,10 @@
 <body>
     <div class="container">
         <div class="form__container">
-            <form action="{% url 'register' %}" method="POST">
+            <form action="{% url 'login' %}" method="POST">
                 {% csrf_token %}
-                <label class="form-label" for="firstname">First Name :</label>
-                <input class="form-control" name="first_name" type="text" placeholder="first name...">
-                <label class="form-label" for="lastname">Last Name :</label>
-                <input class="form-control" name="last_name" type="text" placeholder="last name...">
                 <label class="form-label" for="username">Username :</label>
-                <input class="form-control" name="username" type="text" placeholder="username...">
-                <label class="form-label" for="email">Email :</label>
-                <input class="form-control" name="email" type="email" placeholder="email...">
+                <input class="form-control mb-3" name="username" type="text" placeholder="username...">
                 <label class="form-label" for="password">Password :</label>
                 <input class="form-control mb-3" name="password" type="password" placeholder="password...">
                 <button class="btn1 mt-3">Submit</button>
