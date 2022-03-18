@@ -1,6 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Nunito:wght@200;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Nunito:wght@400;600&display=swap');
 *{
     margin: 0;
+}
+body{
+    font-family: Nunito;
 }
 
 /* hero section */
@@ -39,4 +42,19 @@
 .navbar-brand:hover{
     color: crimson;
     transition: .7s;
+}
+.poster__section{
+    display: flex;
+
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+.poster__section::-webkit-scrollbar{
+    display: none;
+}
+/* posts section */
+.poster__img{
+    max-height: 170px;
+    margin: 3px;
+    border-radius: 6px;
 }
