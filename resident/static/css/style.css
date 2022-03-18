@@ -1,0 +1,9 @@
+*{
+    margin: 0;
+}
+
+/* hero section */
+.hero__section{
+    background-image: url('../images/pexels-pixabay-259588.jpg');
+    height: 100vh;
+}
