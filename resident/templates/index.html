@@ -24,7 +24,7 @@
                       {% if user.is_authenticated %}
                       <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="{% url 'register' %}">Hey {{user.username}}</a></li>
                       <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="#">Create Post</a></li>
-                      <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="{% url 'register' %}">Logout</a></li>
+                      <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="{% url 'logout' %}">Logout</a></li>
                       {% else %}
                       <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="{% url 'register' %}">SignUp</a></li>
                       <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="{% url 'login' %}">Login</a></li>
