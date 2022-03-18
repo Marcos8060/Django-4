@@ -49,7 +49,7 @@ body{
 }
 /* posts section */
 .poster__img{
-    max-height: 150px;
+    max-height: 300px;
     margin: 3px;
     border-radius: 6px;
     transition: transform 450ms;
