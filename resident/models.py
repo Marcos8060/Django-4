@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -8,6 +9,7 @@ class Hood(models.Model):
     location = models.CharField(max_length=50)
     occupants_count = models.IntegerField()
     user = models.ForeignKey(User,on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='hood',default='../images/neighbour.jpg')
 
 
     def __str__(self):

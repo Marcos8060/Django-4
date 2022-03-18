@@ -71,6 +71,9 @@ body{
 .form__container > form > input:focus{
     box-shadow: none;
 }
+.form__container > form > select:focus{
+    box-shadow: none;
+}
 .btn1{
     background: #111;
     color: white;

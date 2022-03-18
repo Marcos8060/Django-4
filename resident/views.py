@@ -1,11 +1,17 @@
+from multiprocessing import context
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import logout
+from .models import Business,Hood
 
 # Create your views here.
 def home(request):
-    return render(request,'index.html')
+    hoods = Hood.objects.all()
+    context ={
+        'hoods':hoods
+    }
+    return render(request,'index.html',context)
 
 # register view
 def register(request):
@@ -15,6 +21,7 @@ def register(request):
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
+        hood = request.POST['hood']
 
         if User.objects.filter(username=username).exists():
             messages.info(request,'Username already exists')
@@ -23,10 +30,11 @@ def register(request):
             messages.info(request,'Email already exists')
             return redirect('register')
         else:
-            user = User.objects.create_user(first_name=first_name,last_name=last_name,username=username,email=email,password=password)
+            user = User.objects.create_user(first_name=first_name,last_name=last_name,username=username,email=email,password=password,hood=hood)
             user.save()
             return redirect('login')
-    return render(request,'register.html')
+    hoods = Hood.objects.all()
+    return render(request,'register.html',{'hoods':hoods})
 
 # login view
 def login(request):

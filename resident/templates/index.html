@@ -45,16 +45,11 @@
         <div class="hero__fadeBottom"></div>
     </div>
     <div class="post__section">
-        <h3 class="mt-4" style="margin-left: 30px;">Latest Posts</h3>
+        <h3 class="mt-4" style="margin-left: 30px;">Neighbourhoods</h3>
         <div class="poster__section mb-4">
-                <a href="#"><img class="img-fluic poster__img" src="../static/images/pexels-pixabay-259588.jpg" alt=""></a>
-                <a href="#"><img class="img-fluic poster__img" src="../static/images/pexels-pixabay-259588.jpg" alt=""></a>
-                <a href="#"><img class="img-fluic poster__img" src="../static/images/pexels-pixabay-259588.jpg" alt=""></a>
-                <a href="#"><img class="img-fluic poster__img" src="../static/images/pexels-pixabay-259588.jpg" alt=""></a>
-                <a href="#"><img class="img-fluic poster__img" src="../static/images/pexels-pixabay-259588.jpg" alt=""></a>
-                <a href="#"><img class="img-fluic poster__img" src="../static/images/pexels-pixabay-259588.jpg" alt=""></a>
-                <a href="#"><img class="img-fluic poster__img" src="../static/images/pexels-pixabay-259588.jpg" alt=""></a>
-                <a href="#"><img class="img-fluic poster__img" src="../static/images/pexels-pixabay-259588.jpg" alt=""></a>
+            {% for hood in hoods %}
+            <a href="#"><img class="img-fluic poster__img" src="{{ hood.image.url }}" alt=""></a>
+            {% endfor %}
         </div>
     </div>
     <footer>
