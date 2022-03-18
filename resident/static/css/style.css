@@ -30,6 +30,7 @@
     height: 60px;
     width: 60px;
     border-radius: 999px;
+    object-fit: cover;
 }
 .navbar-brand{
     color: white;
