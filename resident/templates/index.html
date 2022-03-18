@@ -48,7 +48,7 @@
         <h3 class="mt-4" style="margin-left: 30px;">Neighbourhoods</h3>
         <div class="poster__section mb-4">
             {% for hood in hoods %}
-            <a href="#"><img class="img-fluic poster__img" src="{{ hood.image.url }}" alt=""></a>
+            <a href="{{ hood.get_absolute_url }}"><img class="img-fluic poster__img" src="{{ hood.image.url }}" alt=""></a>
             {% endfor %}
         </div>
     </div>

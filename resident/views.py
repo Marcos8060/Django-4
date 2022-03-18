@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import logout
 from .models import Business,Hood
+from django.shortcuts import get_object_or_404
+
 
 # Create your views here.
 def home(request):
@@ -55,3 +57,11 @@ def login(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+# detail view
+def hood_detail(request,id):
+    hood = get_object_or_404(Hood,id=id)
+    context = {
+        'hood': hood
+    }
+    return render(request,'hood_detail.html',context)
