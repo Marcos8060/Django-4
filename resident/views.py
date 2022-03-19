@@ -1,9 +1,10 @@
 from multiprocessing import context
+from unicodedata import name
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import logout
-from .models import Business,Hood
+from .models import Business,Hood,Profile
 from django.shortcuts import get_object_or_404
 
 
@@ -60,6 +61,15 @@ def logout_view(request):
 
 # profile view
 def profile_page(request):
+    if request.method == 'POST':
+        profile_picture = request.FILES.get('image')
+        location = request.POST['location']
+        name = request.POST['name']
+        
+        profile = Profile(profile_picture=profile_picture,name=name,location=location,user=request.user)
+        profile.save()
+        print(profile)
+        return render(request,'profile.html',{'profile':profile})
     return render(request,'profile.html')
 
 # detail view

@@ -45,13 +45,43 @@
         <div>
             <div class="row mt-5">
                 <div class="col-md-6">
-                    <img class="img-fluid profile_img" src="../static/images/resume.png" alt="">
+                    {% if user.profile.profile_picture %}
+                    <img class="img-fluid profile_img mb-2" src="{{ user.profile.profile_picture.url }}" alt=""><br>
+                    {% else %}
+                    <img class="img-fluid profile_img mb-2" src="../static/images/resume.png" alt=""><br>
+                    {% endif %}
+                    <button style="width: 30%;" class="btn1" data-bs-toggle="modal" data-bs-target="#exampleModal">Update Profile</button>
                 </div>
-                <div class="col-md-6">
-                    <h2>{{ user.username }}</h2>
+                <div class="col-md-6" style="background: white;box-shadow: 2px 3px 2px gray;border-radius: 5px;padding: 10px;">
+                    <h2>Username : {{ profile.name }}</h2>
+                    <h4>Email : {{ user.email }}</h4>
+                    <h4>Location : {{ profile.location }}</h4>
+                    <h4>NeighbourHood : {{ profile.hood }}</h4>
                 </div>
             </div>
         </div>
     </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form action="{% url 'profile' %}" method="POST" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <input name="image" type="file" class="form-control">
+                      <input style="box-shadow: none;" class=" mt-2 form-control" name="name" type="text" placeholder="Provide a name...">
+                      <input style="box-shadow: none;" class=" mt-2 form-control" name="location" type="text" placeholder="Provide a location...">
+                      <button class="btn1 mt-2">Submit</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+            </div>
+        </div>
 </body>
 </html>

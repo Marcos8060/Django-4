@@ -15,12 +15,12 @@ class Business(models.Model):
 
 
 class Hood(models.Model):
-    business = models.ForeignKey(Business,on_delete=models.CASCADE,default='Airtel')
+    business = models.ForeignKey(Business,on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=50)
     occupants_count = models.IntegerField()
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='hood',default='../images/neighbour.jpg')
+    image = models.ImageField(upload_to='hood')
 
 
     def __str__(self):
@@ -28,5 +28,17 @@ class Hood(models.Model):
 
     def get_absolute_url(self):
         return reverse('details',args=[self.id])
+
+class Profile(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    profile_picture = models.ImageField(upload_to='profile')
+    name = models.CharField(max_length=30)
+    location = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+
+
+
 
 
