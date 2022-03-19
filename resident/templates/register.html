@@ -25,12 +25,12 @@
                 <input class="form-control" name="email" type="email" placeholder="email...">
                 <label class="form-label" for="password">Password :</label>
                 <input class="form-control mb-3" name="password" type="password" placeholder="password...">
-                <label class="form-label" for="password">NeighbourHood :</label>
+                <label class="form-label" for="password">Select Your NeighbourHood :</label>
                 <select name="hood" class="form-select form-select-sm" aria-label=".form-select-sm example">
                     {% for hood in hoods %}
                     <option value="">{{ hood.name }}</option>
                     {% endfor %}
-                  </select>
+                </select>
                 <button class="btn1 mt-3">Submit</button>
             </form>
         </div>

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Profile Page</title>
 </head>
-<body>
+<body style="background: #F4F7F6;">
     <div class="container">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
@@ -31,7 +31,11 @@
                   {% endif %}
                   <li class="nav-item dropdown">
                     <a style="margin-right: 70px;" class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img class="img-fluid profile__img" src="../static/images/port.jpeg" alt="">
+                      {% if user.profile.profile_picture %}
+                    <img class="img-fluid profile__img mb-2" src="{{ user.profile.profile_picture.url }}" alt="">
+                    {% else %}
+                    <img class="img-fluid profile__img mb-2" src="../static/images/resume.png" alt="">
+                    {% endif %}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                       <li><a class="dropdown-item" href="#">View Profile</a></li>
@@ -43,20 +47,17 @@
             </div>
           </nav>
         <div>
-            <div class="row mt-5">
-                <div class="col-md-6">
-                    {% if user.profile.profile_picture %}
-                    <img class="img-fluid profile_img mb-2" src="{{ user.profile.profile_picture.url }}" alt=""><br>
+            <div class="row" style="margin-top: 15vh;">
+                <div class="col-md-6 profile__card" style="background: white;box-shadow: 2px 3px 2px gray;border-radius: 5px;padding: 10px;">
+                  {% if user.profile.profile_picture %}
+                    <img class="img-fluid profile_img mb-2" src="{{ user.profile.profile_picture.url }}" alt="">
                     {% else %}
-                    <img class="img-fluid profile_img mb-2" src="../static/images/resume.png" alt=""><br>
+                    <img class="img-fluid profile_img mb-2" src="../static/images/resume.png" alt="">
                     {% endif %}
-                    <button style="width: 30%;" class="btn1" data-bs-toggle="modal" data-bs-target="#exampleModal">Update Profile</button>
-                </div>
-                <div class="col-md-6" style="background: white;box-shadow: 2px 3px 2px gray;border-radius: 5px;padding: 10px;">
-                    <h2>Username : {{ profile.name }}</h2>
-                    <h4>Email : {{ user.email }}</h4>
-                    <h4>Location : {{ profile.location }}</h4>
-                    <h4>NeighbourHood : {{ profile.hood }}</h4>
+                    <button style="width: 22%;" class="btn1" data-bs-toggle="modal" data-bs-target="#exampleModal">Update Profile</button>
+                    <h5 class="text-center mt-3">Name : {{ user.profile.name }}</h5>
+                    <h5 class="text-center">Email : {{ user.email }}</h5>
+                    <h5 class="text-center">Location : {{ user.profile.location }}</h5>
                 </div>
             </div>
         </div>

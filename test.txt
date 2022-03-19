@@ -1,0 +1,8 @@
+ <div class="col-md-6">
+                    {% if user.profile.profile_picture %}
+                    <img class="img-fluid profile_img mb-2" src="{{ user.profile.profile_picture.url }}" alt=""><br>
+                    {% else %}
+                    <img class="img-fluid profile_img mb-2" src="../static/images/resume.png" alt=""><br>
+                    {% endif %}
+                    <button style="width: 30%;" class="btn1" data-bs-toggle="modal" data-bs-target="#exampleModal">Update Profile</button>
+                </div>
