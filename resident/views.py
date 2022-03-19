@@ -4,15 +4,21 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import logout
-from .models import Business,Hood,Profile
+from .models import Business,Hood,Profile,Post
 from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
 def home(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        post = request.POST['post']
+
+        posts = Post(title=title,post=post)
+        posts.save()
     hoods = Hood.objects.all()
     context ={
-        'hoods':hoods
+        'hoods':hoods,
     }
     return render(request,'index.html',context)
 
@@ -76,4 +82,24 @@ def profile_page(request):
 def hood_detail(request,id):
     hood = get_object_or_404(Hood,id=id)
     business = Business.objects.filter(hood=hood)
-    return render(request,'hood_detail.html',{'business':business,'hood':hood})
+    posts = Post.objects.filter(hood_id=id)
+    return render(request,'hood_detail.html',{'business':business,'hood':hood,'posts':posts})
+
+
+def submit_post(request,hood_id):
+    users = request.user
+    if request.method == 'POST':
+        title = request.POST['title']
+        post = request.POST['post']
+
+        posts = Post.objects.filter(hood_id=hood_id).exists()
+        if posts:
+            posts = Post.objects.get(hood_id=hood_id)
+            posts.title = title
+            posts.post = post
+            posts.save()
+        else:
+            hoods = Hood.objects.get(id=hood_id)
+            posts = Post(hood=hoods,title=title,post=post)
+            posts.save()
+    return redirect('/')

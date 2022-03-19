@@ -14,6 +14,8 @@ class Business(models.Model):
         return self.name
 
 
+
+
 class Hood(models.Model):
     business = models.ForeignKey(Business,on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
@@ -28,6 +30,15 @@ class Hood(models.Model):
 
     def get_absolute_url(self):
         return reverse('details',args=[self.id])
+
+
+class Post(models.Model):
+    hood = models.ForeignKey(Hood,on_delete=models.CASCADE)
+    title = models.CharField(max_length=30)
+    post = models.TextField()
+
+    def __str__(self):
+        return self.title
 
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)

@@ -44,16 +44,34 @@
           </nav>
           <div class="mt-5">
               <div class="row">
-                  <div class="col-md-6">
-                    <img class="img-fluid detail__img" src="{{ hood.image.url }}" alt="">
+                  <div class="col-md-8">
+                    <div class="row">
+                      <div class="col-md-6">
+                          <img class="img-fluid detail__img" src="{{ hood.image.url }}" alt="">
+                      </div>
+                      <div class="col-md-6">
+                        <h3 style="font-weight: bolder;">Name : {{ hood.name }}</h3>
+                        <h4>Location : {{ hood.location }}</h4>
+                        <p>Occupants : {{ hood.occupants_count }}</p>
+                        <p>Business : {{ hood.business.name }}</p>
+                      </div>
+                    </div>
+                    <hr>
+                    {% for post in posts %}
+                     <p>{{ post.title }}</p>
+                     <small>{{ post.post }}</small>
+                     <hr>
+                    {% endfor %}
                   </div>
-                  <div class="col-md-6">
-                      <h3 style="font-weight: bolder;">Name : {{ hood.name }}</h3>
-                      <h4>Location : {{ hood.location }}</h4>
-                      <p>Occupants : {{ hood.occupants_count }}</p>
-                      {% for business in business %}
-                      <p>Business : {{ hood.business.name }}</p>
-                      {% endfor %}
+                  <div class="col-md-4" style="background: white;padding: 20px;">
+                     <form action="{% url 'submit_post' hood.id %}" method="POST">
+                       {% csrf_token %}
+                       <label for="title">Title</label>
+                       <input name="title" type="text" class="form-control" placeholder="write a title...">
+                       <label class="mt-3" for="post">Post</label>
+                       <input name="post" type="text" class="form-control" placeholder="write a post...">
+                       <button style="background:#202121" class="btn1 mt-3">Post</button>
+                     </form>
                   </div>
               </div>
           </div>

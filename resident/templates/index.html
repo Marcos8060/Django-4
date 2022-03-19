@@ -23,7 +23,7 @@
                     <ul class="navbar-nav ms-auto">
                       {% if user.is_authenticated %}
                       <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="{% url 'register' %}">Hey {{user.username}}</a></li>
-                      <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="#">Create Post</a></li>
+                      <li data-bs-toggle="modal" data-bs-target="#postModal" style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="#">Create Post</a></li>
                       <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="{% url 'logout' %}">Logout</a></li>
                       {% else %}
                       <li style="font-weight: bolder;" class="m-3"><a class="text-decoration-none text-dark" href="{% url 'register' %}">SignUp</a></li>
@@ -52,6 +52,23 @@
             {% endfor %}
         </div>
     </div>
+    <!-- post modal -->
+    <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="postModalLabel">Write Post</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            
+          </div>
+          <div class="modal-footer">
+          </div>
+      </div>
+      </div>
+  </div>
+    <!-- End of Post Modal -->
     <footer>
       <div class="container">
         <div class="row">
