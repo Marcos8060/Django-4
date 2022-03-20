@@ -98,4 +98,4 @@ def submit_post(request,hood_id):
 
         posts = Post(user=user,hood_id = hood_id,title = title,post = post)
         posts.save()
-        return redirect('/')
+        return redirect(request.META.get('HTTP_REFERER'))
