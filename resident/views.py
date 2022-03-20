@@ -6,6 +6,8 @@ from django.contrib.auth.models import User,auth
 from django.contrib.auth import logout
 from .models import Business,Hood,Profile,Post
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
+
 
 
 # Create your views here.
@@ -66,6 +68,7 @@ def logout_view(request):
     return redirect('home')
 
 # profile view
+@login_required
 def profile_page(request):
     if request.method == 'POST':
         profile_picture = request.FILES.get('image')
@@ -79,6 +82,7 @@ def profile_page(request):
     return render(request,'profile.html')
 
 # detail view
+@login_required
 def hood_detail(request,id):
     hood = get_object_or_404(Hood,id=id)
     business = Business.objects.filter(hood=hood)

@@ -14,3 +14,5 @@ users = request.user
             posts = Post(hood=hoods,title=title,post=post)
             posts.save()
     return redirect('/')
+
+   
