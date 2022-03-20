@@ -87,19 +87,11 @@ def hood_detail(request,id):
 
 
 def submit_post(request,hood_id):
-    users = request.user
+    user = request.user
     if request.method == 'POST':
         title = request.POST['title']
         post = request.POST['post']
 
-        posts = Post.objects.filter(hood_id=hood_id).exists()
-        if posts:
-            posts = Post.objects.get(hood_id=hood_id)
-            posts.title = title
-            posts.post = post
-            posts.save()
-        else:
-            hoods = Hood.objects.get(id=hood_id)
-            posts = Post(hood=hoods,title=title,post=post)
-            posts.save()
-    return redirect('/')
+        posts = Post(user=user,hood_id = hood_id,title = title,post = post)
+        posts.save()
+        return redirect('/')

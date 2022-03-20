@@ -23,6 +23,7 @@ class Hood(models.Model):
     occupants_count = models.IntegerField()
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     image = models.ImageField(upload_to='hood')
+    emergency_num = models.IntegerField()
 
 
     def __str__(self):
@@ -33,9 +34,11 @@ class Hood(models.Model):
 
 
 class Post(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     hood = models.ForeignKey(Hood,on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
     post = models.TextField()
+    post_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.title

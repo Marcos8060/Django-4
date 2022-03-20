@@ -54,12 +54,18 @@
                         <h4>Location : {{ hood.location }}</h4>
                         <p>Occupants : {{ hood.occupants_count }}</p>
                         <p>Business : {{ hood.business.name }}</p>
+                        <p>Emergency contact : {{ hood.emergency_num }}</p>
                       </div>
                     </div>
                     <hr>
+                    <h6 style="font-weight: bolder;">Available Posts</h6>
                     {% for post in posts %}
-                     <p>{{ post.title }}</p>
-                     <small>{{ post.post }}</small>
+                     <small style="font-weight: bolder;">{{ post.title }} - </small>
+                     <small class="text-muted">{{ post.post }}</small><br>
+                     <div class="d-flex justify-content-between align-items-center">
+                      <small>By {{ post.user }}</small>
+                      <small>{{ post.post_date }}</small>
+                     </div>
                      <hr>
                     {% endfor %}
                   </div>
@@ -70,7 +76,7 @@
                        <input name="title" type="text" class="form-control" placeholder="write a title...">
                        <label class="mt-3" for="post">Post</label>
                        <input name="post" type="text" class="form-control" placeholder="write a post...">
-                       <button style="background:#202121" class="btn1 mt-3">Post</button>
+                       <button type="submit" style="background:#202121" class="btn1 mt-3">Post</button>
                      </form>
                   </div>
               </div>

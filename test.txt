@@ -1,8 +1,16 @@
- <div class="col-md-6">
-                    {% if user.profile.profile_picture %}
-                    <img class="img-fluid profile_img mb-2" src="{{ user.profile.profile_picture.url }}" alt=""><br>
-                    {% else %}
-                    <img class="img-fluid profile_img mb-2" src="../static/images/resume.png" alt=""><br>
-                    {% endif %}
-                    <button style="width: 30%;" class="btn1" data-bs-toggle="modal" data-bs-target="#exampleModal">Update Profile</button>
-                </div>
+users = request.user
+    if request.method == 'POST':
+        title = request.POST['title']
+        post = request.POST['post']
+
+        posts = Post.objects.filter(hood_id=hood_id).exists()
+        if posts:
+            posts = Post.objects.get(hood_id=hood_id)
+            posts.title = title
+            posts.post = post
+            posts.save()
+        else:
+            hoods = Hood.objects.get(id=hood_id)
+            posts = Post(hood=hoods,title=title,post=post)
+            posts.save()
+    return redirect('/')
