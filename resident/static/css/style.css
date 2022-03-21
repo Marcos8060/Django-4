@@ -96,11 +96,13 @@ body{
     border-radius: 5px;
 }
 
-/* DETAILS SECTION */
-/* .detail__img{
-    width: 600px;
-    height: 400px;
-} */
+.biz__img{
+    width: 250px;
+}
+.img__box{
+    background: white;
+    width: 250px;
+}
 /* footer */
 footer{
     background: #111;

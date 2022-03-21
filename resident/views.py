@@ -19,10 +19,8 @@ def home(request):
         posts = Post(title=title,post=post)
         posts.save()
     hoods = Hood.objects.all()
-    context ={
-        'hoods':hoods,
-    }
-    return render(request,'index.html',context)
+    profile = Profile.objects.all()
+    return render(request,'index.html',{'profile':profile,'hoods':hoods})
 
 # register view
 def register(request):
@@ -87,7 +85,9 @@ def hood_detail(request,id):
     hood = get_object_or_404(Hood,id=id)
     business = Business.objects.filter(hood=hood)
     posts = Post.objects.filter(hood_id=id)
-    return render(request,'hood_detail.html',{'business':business,'hood':hood,'posts':posts})
+    profile = Profile.objects.all()
+    business = Business.objects.filter(hood_id=id)
+    return render(request,'hood_detail.html',{'business':business,'hood':hood,'posts':posts,'profile':profile,'business':business})
 
 
 def submit_post(request,hood_id):

@@ -31,7 +31,11 @@
                   {% endif %}
                   <li class="nav-item dropdown">
                     <a style="margin-right: 70px;" class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img class="img-fluid profile__img" src="../static/images/port.jpeg" alt="">
+                      {% if user.profile.profile_picture %}
+                      <img class="img-fluid profile__img" src="{{ user.profile.profile_picture.url }}" alt="">
+                      {% else %}
+                      <img class="img-fluid profile__img" src="../static/images/avatar.png" alt="">
+                      {% endif %}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                       <li><a class="dropdown-item" href="{% url 'profile' %}">View Profile</a></li>
@@ -52,12 +56,23 @@
                       <div class="col-md-6">
                         <h3 style="font-weight: bolder;">Name : {{ hood.name }}</h3>
                         <h4>Location : {{ hood.location }}</h4>
-                        <p>Occupants : {{ hood.occupants_count }}</p>
+                        <p>Occupants : {{ hood.user }}</p>
                         <p>Business : {{ hood.business.name }}</p>
                         <p>Emergency contact : {{ hood.emergency_num }}</p>
                       </div>
                     </div>
                     <hr>
+                    <h5>Available Businesses</h5>
+                    {% for business in business %}
+                    <div class="img__box mb-5">
+                      <img class="img-fluid biz__img" src="{{ business.business_img.url }}" alt=""><br>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <small style="padding: 10px;">{{ business.name }}</small>
+                        <small style="padding: 10px;">Agriculture</small>
+                      </div>
+                      <small style="padding: 10px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, veniam.</small>
+                    </div>
+                    {% endfor %}
                     <h6 style="font-weight: bolder;">Available Posts</h6>
                     {% for post in posts %}
                      <small style="font-weight: bolder;">{{ post.title }} - </small>
