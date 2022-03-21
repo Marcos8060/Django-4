@@ -57,22 +57,26 @@
                         <h3 style="font-weight: bolder;">Name : {{ hood.name }}</h3>
                         <h4>Location : {{ hood.location }}</h4>
                         <p>Occupants : {{ hood.user }}</p>
-                        <p>Business : {{ hood.business.name }}</p>
                         <p>Emergency contact : {{ hood.emergency_num }}</p>
                       </div>
                     </div>
                     <hr>
                     <h5>Available Businesses</h5>
-                    {% for business in business %}
-                    <div class="img__box mb-5">
-                      <img class="img-fluid biz__img" src="{{ business.business_img.url }}" alt=""><br>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <small style="padding: 10px;">{{ business.name }}</small>
-                        <small style="padding: 10px;">Agriculture</small>
+                    <div class="row">
+                      {% for business in business %}
+                      <div class="col-md-6">
+                        <div class="img__box mb-5">
+                          <img class="img-fluid biz__img" src="{{ business.business_img.url }}" alt=""><br>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <small style="padding: 10px;">{{ business.name }}</small>
+                            <small style="padding: 10px;">{{ business.ministry }}</small>
+                          </div>
+                          <small style="padding: 10px;">Email : {{ business.email }}</small><br>
+                          <small style="padding: 10px;font-size: 14px;">{{ business.description }}</small>
+                        </div>
                       </div>
-                      <small style="padding: 10px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, veniam.</small>
+                      {% endfor %}
                     </div>
-                    {% endfor %}
                     <h6 style="font-weight: bolder;">Available Posts</h6>
                     {% for post in posts %}
                      <small style="font-weight: bolder;">{{ post.title }} - </small>

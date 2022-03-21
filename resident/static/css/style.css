@@ -97,11 +97,12 @@ body{
 }
 
 .biz__img{
-    width: 250px;
+    width: 300px;
 }
 .img__box{
     background: white;
-    width: 250px;
+    width: 300px;
+    height: 280px;
 }
 /* footer */
 footer{
