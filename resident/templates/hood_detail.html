@@ -48,7 +48,7 @@
           </nav>
           <div class="mt-5">
               <div class="row">
-                  <div class="col-md-8">
+                  <div class="col-md-8 mb-5">
                     <div class="row">
                       <div class="col-md-6">
                           <img class="img-fluid detail__img" src="{{ hood.image.url }}" alt="">
@@ -88,13 +88,14 @@
                      <hr>
                     {% endfor %}
                   </div>
-                  <div class="col-md-4" style="background: white;padding: 20px;">
+                  <div class="col-md-4 post__img" style="background: white;padding: 20px;">
+                    <h5 class="mb-5">Drop a post below</h5>
                      <form action="{% url 'submit_post' hood.id %}" method="POST">
                        {% csrf_token %}
                        <label for="title">Title</label>
-                       <input name="title" type="text" class="form-control" placeholder="write a title...">
+                       <input style="box-shadow: none;" name="title" type="text" class="form-control" placeholder="write a title...">
                        <label class="mt-3" for="post">Post</label>
-                       <input name="post" type="text" class="form-control" placeholder="write a post...">
+                       <input style="box-shadow: none;" name="post" type="text" class="form-control" placeholder="write a post...">
                        <button type="submit" style="background:#202121" class="btn1 mt-3">Post</button>
                      </form>
                   </div>

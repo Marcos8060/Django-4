@@ -13,6 +13,9 @@
 <body>
     <div class="container">
         <div class="form__container">
+            {% for message in messages %}
+             <p style="color: crimson;">{{ message }}</p>
+            {% endfor %}
             <form action="{% url 'login' %}" method="POST">
                 {% csrf_token %}
                 <label class="form-label" for="username">Username :</label>

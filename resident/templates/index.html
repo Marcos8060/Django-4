@@ -49,10 +49,17 @@
     </div>
     <div class="post__section">
         <h3 class="mt-4" style="margin-left: 30px;">Neighbourhoods</h3>
-        <div class="poster__section mb-4">
+        <div class="container-fluid">
+          <div class="row">
             {% for hood in hoods %}
-            <a href="{{ hood.get_absolute_url }}"><img class="img-fluic poster__img" src="{{ hood.image.url }}" alt=""></a>
+            <div class="col-md-3">
+              <div class="poster__section mb-4">
+                   <a href="{{ hood.get_absolute_url }}"><img class="img-fluic poster__img" src="{{ hood.image.url }}" alt=""></a><br>
+                    <p style="margin-left: 10px;margin-top: 5px;">NeighbourHood : {{ hood.name }}</p>
+            </div>
+            </div>
             {% endfor %}
+          </div>
         </div>
     </div>
     <!-- post modal -->

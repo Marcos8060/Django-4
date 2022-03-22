@@ -51,9 +51,12 @@ body{
     color: crimson;
     transition: .7s;
 }
+.poster__section > a > img{
+    width: 300px;
+}
 .poster__section{
-    display: flex;
-
+    background: white;
+    width: 300px;
     overflow-y: hidden;
     overflow-x: scroll;
 }
@@ -61,15 +64,12 @@ body{
     display: none;
 }
 /* posts section */
-.poster__img{
+/* .poster__img{
     max-height: 250px;
     margin: 3px;
     border-radius: 6px;
     transition: transform 450ms;
-}
-.poster__img:hover{
-    transform: scale(1.08);
-}
+} */
 /* register page */
 .form__container{
     width: 50%;
@@ -95,14 +95,14 @@ body{
     height: 38px;
     border-radius: 5px;
 }
-
 .biz__img{
     width: 300px;
+    height: 180px;
 }
 .img__box{
     background: white;
     width: 300px;
-    height: 280px;
+    height: 300px;
 }
 /* footer */
 footer{
